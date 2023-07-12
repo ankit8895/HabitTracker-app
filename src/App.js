@@ -1,17 +1,24 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Habit from './components/Habit';
 
-function App() {
+const App = () => {
   return (
-    <div>
+    <Router>
       <Header />
       <main className='py-3'>
-        <Container></Container>
+        <Container>
+          <Routes>
+            <Route path='/' element={<Habit />} />
+          </Routes>
+        </Container>
       </main>
       <Footer />
-    </div>
+    </Router>
   );
-}
+};
 
 export default App;
