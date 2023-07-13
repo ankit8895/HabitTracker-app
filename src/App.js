@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Habit from './components/Habit';
+import HomePage from './Pages/HomePage';
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
       <main className='py-3'>
         <Container>
           <Routes>
-            <Route path='/' element={<Habit />} />
+            <Route path='/' element={<HomePage />} />
           </Routes>
         </Container>
       </main>
