@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Button, Row, Col } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import HabitModal from '../components/HabitModal';
 import HabitList from '../components/HabitList';
 
@@ -14,7 +13,7 @@ const HomePage = () => {
     <>
       <HabitModal />
 
-      {!loading && <HabitList habits={habits} />}
+      {!loading && <HabitList />}
     </>
   );
 };

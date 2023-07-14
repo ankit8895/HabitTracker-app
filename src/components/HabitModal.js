@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 import { actions } from '../redux/reducers/habitReducer';
 
@@ -12,8 +13,11 @@ const HabitModal = () => {
   const addHabitHandler = () => {
     dispatch(
       actions.addHabit({
+        id: uuidv4(),
         title: habitText,
-        trackCount: 0,
+        status: Array(7)
+          .fill()
+          .map(() => ({ id: uuidv4(), value: 'None' })),
       })
     );
     setHabitText('');
@@ -21,17 +25,17 @@ const HabitModal = () => {
   };
   return (
     <>
-      <Row className='align-items-center'>
+      <Row className='text-center align-items-center mb-3'>
         <Col>
           <h1>Habits</h1>
         </Col>
-        <Col className='text-right'>
+        <Col>
           <Button
             type='button'
-            className='btn btn-primary'
+            className='btn btn-primary fw-bolder'
             onClick={() => setShow(true)}
           >
-            <i className='fa-solid fa-plus'></i> Create Habit
+            <i className='fa-solid fa-plus'></i> CREATE HABIT
           </Button>
         </Col>
       </Row>
@@ -55,18 +59,18 @@ const HabitModal = () => {
         <Modal.Footer>
           <Button
             type='button'
-            className='btn btn-primary'
+            className='btn btn-primary fw-bolder'
             onClick={addHabitHandler}
           >
-            Create
+            CREATE
           </Button>
           <Button
             type='button'
-            className='btn btn-secondary'
+            className='btn btn-secondary fw-bolder'
             data-bs-dismiss='modal'
             onClick={() => setShow(false)}
           >
-            Close
+            CLOSE
           </Button>
         </Modal.Footer>
       </Modal>
