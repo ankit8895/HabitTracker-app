@@ -1,25 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, Row, Col } from 'react-bootstrap';
 import HabitModal from '../components/HabitModal';
 import HabitList from '../components/HabitList';
 
 const HomePage = () => {
-  const [modalAlert, setModalAlert] = useState(false);
+  const habitDetails = useSelector((state) => state.habitReducer);
+  const { loading, habits } = habitDetails;
+
+  useEffect(() => {}, [loading, habits]);
 
   return (
     <>
-      <Row className='align-items-center'>
-        <Col>
-          <h1>Habits</h1>
-        </Col>
-        <Col className='text-right'>
-          <Button type='button' className='btn btn-primary'>
-            <i className='fa-solid fa-plus'></i> Create Habit
-          </Button>
-        </Col>
-      </Row>
-
       <HabitModal />
-      <HabitList />
+
+      {!loading && <HabitList habits={habits} />}
     </>
   );
 };
