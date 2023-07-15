@@ -18,9 +18,9 @@ const HabitList = () => {
 
   return (
     <>
-      <Table responsive hover>
+      <Table responsive hover bordered>
         <thead>
-          <tr>
+          <tr className='table-light'>
             <th>HABIT</th>
             <th>TRACK</th>
             <th></th>
@@ -28,12 +28,12 @@ const HabitList = () => {
           </tr>
         </thead>
         <tbody>
-          {habits.map((habit, index) => (
-            <tr key={index}>
+          {habits.map((habit) => (
+            <tr key={habit.id} className='table-light'>
               <td>{habit.title}</td>
-              <td>{habit.trackCount}</td>
+              <td></td>
               <td>
-                <Link to={`/week-view/${index}`}>
+                <Link to={`/week-view/${habit.id}`}>
                   <Button
                     type='button'
                     className='btn btn-info fw-bolder'

@@ -15,9 +15,7 @@ const HabitModal = () => {
       actions.addHabit({
         id: uuidv4(),
         title: habitText,
-        status: Array(7)
-          .fill()
-          .map(() => ({ id: uuidv4(), value: 'None' })),
+        status: Array(7).fill('None'),
       })
     );
     setHabitText('');
