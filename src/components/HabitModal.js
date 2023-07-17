@@ -47,8 +47,9 @@ const HabitModal = () => {
               <Form.Label>Enter</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Enter the habit'
+                placeholder='ENTER THE HABIT'
                 value={habitText}
+                className='fw-bolder'
                 onChange={(e) => setHabitText(e.target.value)}
               />
             </Form.Group>

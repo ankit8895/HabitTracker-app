@@ -1,26 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Table, ButtonGroup, ToggleButton } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
+import CustomizeButton from '../components/CustomizeButton';
 
 const WeekViewPage = () => {
   const { id } = useParams();
 
-  const habitDetails = useSelector((state) => state.habitReducer);
-  const { loading, habits } = habitDetails;
+  const habitsDetails = useSelector((state) => state.habitReducer);
+  const { habits } = habitsDetails;
 
   const currentHabit = habits.find((habit) => habit.id === id);
 
   const date = new Date();
 
   const weekdays = [
+    'Sunday',
     'Monday',
     'Tuesday',
     'Wednesday',
     'Thursday',
     'Friday',
     'Saturday',
-    'Sunday',
   ];
 
   const currentDate = date.getDate();
@@ -29,18 +31,26 @@ const WeekViewPage = () => {
   const startOfWeekDate = new Date(
     date.getFullYear(),
     date.getMonth(),
-    currentDate - currentDayIndex + 1
+    currentDate - currentDayIndex
   );
-
-  const toggleHandler = ({ status, statusIndex }) => {};
 
   return (
     <>
-      <Table responsive hover bordered className='table-light'>
+      <Link to='/'>
+        <Button type='button' className='btn-light mb-2 fw-bolder'>
+          GO BACK
+        </Button>
+      </Link>
+      <Table responsive hover>
         <thead>
           <tr>
-            <th>Week Day</th>
-            <th>Date</th>
+            <th></th>
+            <th className='text-dark'>
+              <h4>Week Day</h4>
+            </th>
+            <th className='text-dark'>
+              <h4>Date</h4>
+            </th>
             <th></th>
           </tr>
         </thead>
@@ -55,92 +65,16 @@ const WeekViewPage = () => {
               .substring(4, 16);
             return (
               <tr key={index}>
+                <td></td>
                 <td>{weekdays[index]}</td>
                 <td>{displayDate}</td>
                 <td>
-                  {item === 'None' && (
-                    <ButtonGroup>
-                      <ToggleButton
-                        variant='primary'
-                        size='sm'
-                        onClick={() =>
-                          toggleHandler({ status: 'Done', statusIndex: index })
-                        }
-                      >
-                        DONE
-                      </ToggleButton>
-                      <ToggleButton
-                        variant='outline-primary'
-                        size='sm'
-                        onClick={() =>
-                          toggleHandler({
-                            status: 'Undone',
-                            statusIndex: index,
-                          })
-                        }
-                      >
-                        UNDONE
-                      </ToggleButton>
-                      <ToggleButton variant='outline-primary' size='sm'>
-                        NONE
-                      </ToggleButton>
-                    </ButtonGroup>
-                  )}
-
-                  {item === 'Done' && (
-                    <ButtonGroup>
-                      <ToggleButton variant='primary' size='sm'>
-                        DONE
-                      </ToggleButton>
-                      <ToggleButton
-                        variant='outline-primary'
-                        size='sm'
-                        onClick={() =>
-                          toggleHandler({
-                            status: 'Undone',
-                            statusIndex: index,
-                          })
-                        }
-                      >
-                        UNDONE
-                      </ToggleButton>
-                      <ToggleButton
-                        variant='outline-primary'
-                        size='sm'
-                        onClick={() =>
-                          toggleHandler({ status: 'None', statusIndex: index })
-                        }
-                      >
-                        NONE
-                      </ToggleButton>
-                    </ButtonGroup>
-                  )}
-
-                  {item === 'Undone' && (
-                    <ButtonGroup>
-                      <ToggleButton
-                        variant='primary'
-                        size='sm'
-                        onClick={() =>
-                          toggleHandler({ status: 'Done', statusIndex: index })
-                        }
-                      >
-                        DONE
-                      </ToggleButton>
-                      <ToggleButton variant='outline-primary' size='sm'>
-                        UNDONE
-                      </ToggleButton>
-                      <ToggleButton
-                        variant='outline-primary'
-                        size='sm'
-                        onClick={() =>
-                          toggleHandler({ status: 'None', statusIndex: index })
-                        }
-                      >
-                        NONE
-                      </ToggleButton>
-                    </ButtonGroup>
-                  )}
+                  <CustomizeButton
+                    item={item}
+                    habitId={id}
+                    statusIndex={index}
+                    currentDayIndex={currentDayIndex}
+                  />
                 </td>
               </tr>
             );
