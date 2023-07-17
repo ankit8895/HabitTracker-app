@@ -1,11 +1,19 @@
+//import react
 import React from 'react';
+//import useDispatch hook
 import { useDispatch } from 'react-redux';
+//import ButtonGroup and ToggleButton component
 import { ButtonGroup, ToggleButton } from 'react-bootstrap';
+//import actions from reducer
 import { actions } from '../redux/reducers/habitReducer';
 
+//create react functional component CustomizeButton
 const CustomizeButton = ({ item, habitId, statusIndex, currentDayIndex }) => {
+  //to dispatch actions
   const dispatch = useDispatch();
+  //toggleHandler called when clicked to toggle between status of the habit
   const toggleHandler = ({ status, statusIndex }) => {
+    //dispatch toggleHabit() with HabitId,status and status index in the habit
     dispatch(
       actions.toggleHabit({
         habitId,
@@ -14,10 +22,13 @@ const CustomizeButton = ({ item, habitId, statusIndex, currentDayIndex }) => {
       })
     );
   };
+
+  //this is UI to display
   return (
     <>
+      {/* if status is Done display below button group */}
       {item === 'Done' ? (
-        <ButtonGroup toggle>
+        <ButtonGroup toggle='true'>
           <ToggleButton
             key={statusIndex}
             type='radio'
@@ -30,7 +41,7 @@ const CustomizeButton = ({ item, habitId, statusIndex, currentDayIndex }) => {
           </ToggleButton>
 
           <ToggleButton
-            key={statusIndex}
+            key={statusIndex + 1}
             type='radio'
             variant='outline-primary'
             checked={item === 'Undone'}
@@ -47,7 +58,7 @@ const CustomizeButton = ({ item, habitId, statusIndex, currentDayIndex }) => {
           </ToggleButton>
 
           <ToggleButton
-            key={statusIndex}
+            key={statusIndex + 2}
             type='radio'
             variant='outline-primary'
             checked={item === 'None'}
@@ -58,8 +69,9 @@ const CustomizeButton = ({ item, habitId, statusIndex, currentDayIndex }) => {
             NONE
           </ToggleButton>
         </ButtonGroup>
-      ) : item === 'Undone' ? (
-        <ButtonGroup toggle>
+      ) : // if status is Undone then below button group will be display
+      item === 'Undone' ? (
+        <ButtonGroup toggle='true'>
           <ToggleButton
             key={statusIndex}
             type='radio'
@@ -73,7 +85,7 @@ const CustomizeButton = ({ item, habitId, statusIndex, currentDayIndex }) => {
           </ToggleButton>
 
           <ToggleButton
-            key={statusIndex}
+            key={statusIndex + 1}
             type='radio'
             variant='outline-primary'
             checked={item === 'Undone'}
@@ -84,7 +96,7 @@ const CustomizeButton = ({ item, habitId, statusIndex, currentDayIndex }) => {
           </ToggleButton>
 
           <ToggleButton
-            key={statusIndex}
+            key={statusIndex + 2}
             type='radio'
             variant='outline-primary'
             checked={item === 'None'}
@@ -96,7 +108,8 @@ const CustomizeButton = ({ item, habitId, statusIndex, currentDayIndex }) => {
           </ToggleButton>
         </ButtonGroup>
       ) : (
-        <ButtonGroup toggle>
+        // if status is neither of two then display below button groups
+        <ButtonGroup toggle='true'>
           <ToggleButton
             key={statusIndex}
             type='radio'
@@ -110,7 +123,7 @@ const CustomizeButton = ({ item, habitId, statusIndex, currentDayIndex }) => {
           </ToggleButton>
 
           <ToggleButton
-            key={statusIndex}
+            key={statusIndex + 1}
             type='radio'
             variant='outline-primary'
             checked={item === 'Undone'}
@@ -127,7 +140,7 @@ const CustomizeButton = ({ item, habitId, statusIndex, currentDayIndex }) => {
           </ToggleButton>
 
           <ToggleButton
-            key={statusIndex}
+            key={statusIndex + 2}
             type='radio'
             variant='outline-primary'
             checked={item === 'None'}
@@ -142,4 +155,5 @@ const CustomizeButton = ({ item, habitId, statusIndex, currentDayIndex }) => {
   );
 };
 
+//export CustomizeButton
 export default CustomizeButton;

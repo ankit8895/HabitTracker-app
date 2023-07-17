@@ -1,10 +1,14 @@
+//import react
 import React from 'react';
+//import Container and Navbar component
 import { Container, Navbar } from 'react-bootstrap';
 
+//create react functional component Header
 const Header = () => {
+  //this is UI to display
   return (
     <header>
-      <Navbar expand='lg' className='bg-body-tertiary'>
+      <Navbar expand='lg' className='bg-body-tertiary fw-bolder'>
         <Container>
           <Navbar.Brand href='/'>
             <img
@@ -22,4 +26,5 @@ const Header = () => {
   );
 };
 
+//export Header
 export default Header;

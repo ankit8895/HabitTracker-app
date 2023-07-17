@@ -1,21 +1,30 @@
-import React, { useEffect } from 'react';
+//import react
+import React from 'react';
+//import Link
 import { Link } from 'react-router-dom';
+//import useDispatch and useSelector hook
 import { useDispatch, useSelector } from 'react-redux';
+//import Button and Table component
 import { Button, Table } from 'react-bootstrap';
+//import actions from reducer
 import { actions } from '../redux/reducers/habitReducer';
 
+//create react function component HabitList
 const HabitList = () => {
+  //for dispatch actions
   const dispatch = useDispatch();
 
+  //getting habits from the state
   const habitsDetails = useSelector((state) => state.habitReducer);
-
   const { habits } = habitsDetails;
-  useEffect(() => {}, [habits]);
 
+  //deleteHabitHandler called to clicked delete button to dispatch deleteHabit() to delete habit
   const deleteHabitHandler = (habit) => {
+    //dispatch deleteHabit() with habit
     dispatch(actions.deleteHabit(habit));
   };
 
+  //this is UI to display
   return (
     <>
       <Table responsive hover>
@@ -33,15 +42,17 @@ const HabitList = () => {
           </tr>
         </thead>
         <tbody>
+          {/* iterate all habits created by user */}
           {habits.map((habit) => {
+            // to calculate number of days user completed the habit
             let count = 0;
-
             habit.status.forEach((status) => {
               if (status === 'Done') {
                 count++;
               }
             });
 
+            // this will be display with the habit details
             return (
               <tr key={habit.id}>
                 <td></td>
@@ -72,4 +83,5 @@ const HabitList = () => {
   );
 };
 
+//export HabitList
 export default HabitList;
