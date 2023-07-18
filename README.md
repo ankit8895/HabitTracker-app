@@ -1,3 +1,33 @@
+React Habit Tracker App
+
+https://habittrackerapp.netlify.app/
+
+The libraries, dependencies, and theme used in the app are as follows:
+
+1. React
+2. React DOM
+3. Redux Toolkit
+4. React router dom
+5. React Redux
+6. React Bootstrap
+7. Bootswatch
+8. UUID
+
+The React Habit Tracker app is a versatile and user-friendly application designed to help users track and manage their daily habits. It offers a range of features that allow users to add multiple habits, track each habit's status on a daily basis, view habit history, and modify habit statuses for both the current and previous days.
+
+The app enables users to create and add multiple habits that they wish to track, such as reading a book, going to the gym, practicing a musical instrument, or any other activities they want to incorporate into their daily routine. Users can easily add new habits using the dedicated "Add" button, which provides a convenient interface for inputting habit names.
+
+Once the habits are added, the app provides a comprehensive view of all current habits. This view displays a list of habits, and for each habit, it includes a toggle button that allows users to change the status of the habit for the current day. The three possible statuses for each habit are:
+
+1. Done: Users can mark a habit as "Done" for the day to indicate successful completion.
+2. Not Done: Users can mark a habit as "Not Done" for the day if they were unable to complete the habit.
+3. None: If the user did not take any action on a habit for a particular day, they can mark it as "None" to indicate no progress.
+
+The app also offers a separate view that displays the habit history for the past seven days. This view includes a section for each habit, showing the status of the habit for each of the previous six days, as well as today's status. Users can easily toggle between the three habit statuses (Done, Not Done, None) for both today and any of the previous six days. This flexibility allows users to update and modify habit statuses retroactively as needed.
+
+With its intuitive user interface and interactive functionality, the React Habit Tracker app provides a powerful tool for users to monitor and maintain their daily habits effectively. The app's ability to track multiple habits, provide status updates for each day, and offer a comprehensive habit history view empowers users to stay accountable and make progress towards their goals. Whether it's cultivating new habits, breaking old ones, or simply fostering self-discipline, the React Habit Tracker app is a valuable companion in building and maintaining a positive daily routine.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
