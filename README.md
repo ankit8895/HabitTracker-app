@@ -1,4 +1,4 @@
-React Habit Tracker App
+# React Habit Tracker App
 
 https://habittrackerapp.netlify.app/
 
